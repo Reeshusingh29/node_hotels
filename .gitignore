@@ -1,0 +1,6 @@
+# ignore node_modules directory   
+#iska matlab node modules mai jitne bhi hai usko track karne ka zarurat nahi hai 
+
+node_modules/
+
+#other entries..

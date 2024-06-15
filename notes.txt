@@ -1,0 +1,52 @@
+/*
+const express = require('express')  //ye line bata raha hai ki hame express jarurat hai 
+const app = express()   //ye line batata hai ki hamne express ka blueprint apne app mai import  kar liya
+const db=require('./db')
+//ab app k pass saari woh functionalities haijisse server bana sakta hai 
+//ye jo upar app likha hai waha ham kuch bhi likh sakte hai jaise app k jagahreeshulikha toh bhi chalega 
+/*
+app.get('/', function (req, res) {
+    res.send('Welcome to my hotel ,how i can help yu')
+  })
+
+app.get('/chicken',(req,res)=>{
+    res.send('chicken is available')
+})
+
+app.get('/idli',(req,res)=>{
+    var customized_idli={
+        name:'ravaidli',
+        size:'10 cm diameter',
+        is_sambhar:true,
+        is_chutney:false
+    }
+    res.send(customized_idli)
+})
+
+app.listen(3001,()=>{
+    console.log("listening on port 3000")
+})   //ye 3000 port no hai simple mai matlab ki ye server ka room number hai 
+//ye basically batata hai ki 30001 pe hamara server active hai 
+
+
+
+
+/* getmethod hame bas information deta hai aur ham uss info ko na toh delete ,update aur kuchnahi kar
+sakte bas ham uss info ko access kar sakte hai 
+2. '/' iska matlab hai ki ye ek address hai 
+3. res:- ye response hai iska matlab jabkoi ye '/' address pe jaayega toh response 
+mai 'hello world dedo bas
+
+server band karne k liye ctrl+c  aur server chalu karne k liye 
+nodemon server4.js 
+
+post method mai server data leta hai clients se 
+
+const express = require('express');
+const mongoose = require('./db'); // Import the mongoose instance from db.js
+
+const app = express();
+
+app.listen(3000, () => {
+  console.log('Listening on port 3000');
+});
