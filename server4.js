@@ -2,8 +2,11 @@ const express = require('express'); // Express library import kar rahe hain
 const app = express();
 const db = require('./db'); // Apna dbs.js file import kar rahe hain
 
+require('dotenv').config();
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());   //req.body
+const PORT =process.env.PORT || 3000;
+
 
 const person = require('./models/person');
 const menuitem = require('./models/menu'); // Corrected variable name
