@@ -5,7 +5,19 @@ const db = require('./db'); // Apna dbs.js file import kar rahe hain
 require('dotenv').config();
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());   //req.body
-const PORT =process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
+
+
+
+//MIDDLEWARE FUNCTION
+const logrequest =(req,res,next)=>{
+  console.log(`${new Date().toLocaleString} request made to :${req.originalUrl}`);
+  next();  //move on to the next phase 
+  //middleware mai hame hamesha next() function ko call karna zaruri hai 
+}
+
+app.use(logrequest);
+
 
 
 const person = require('./models/person');
@@ -21,7 +33,7 @@ app.post('/', async (req, res) => {
 
     // Create a new person document using the mongoose model
     const newPerson = new person(data);
-    
+
     // Save the new person to the database
     const response = await newPerson.save();
     console.log('data saved');
@@ -32,13 +44,13 @@ app.post('/', async (req, res) => {
   }
 });
 
-app.post('/menu', async (req, res) => {    
+app.post('/menu', async (req, res) => {
   try {
     const data = req.body; // Assuming the request body contains the menu data
 
     // Create a new menu document using the mongoose model
     const newMenu = new menuitem(data); // Corrected variable name
-    
+
     // Save the new menu to the database
     const response = await newMenu.save();
     console.log('data saved');
@@ -67,7 +79,7 @@ app.get('/:worktype', async (req, res) => {
       const response = await person.find({ work: worktype });
       console.log('response fetched');
       res.status(200).json(response);
-    }   
+    }
   } catch (err) {
     console.log(err);
     res.status(500).json({ Error: 'Bekaar hai bhai mai toot gaya ' });
@@ -92,7 +104,7 @@ app.get('/', async (req, res) => {
 const person_routes = require('./routes/person_routes');
 
 //use the routers
-app.use('/',person_routes);
+app.use('/', person_routes);
 
 
 app.listen(3000, () => {
